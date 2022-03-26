@@ -26,10 +26,7 @@
     "ext-curl": "*",
     "ext-json": "*",
     "ext-yaml": "*",
-    "composer-runtime-api": ">=2.1",
-  },
-  "require-dev": {
-
+    "composer-runtime-api": ">=2.1"
   },
   "autoload": {
     "psr-4": {
