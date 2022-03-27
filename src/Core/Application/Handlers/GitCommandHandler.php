@@ -21,7 +21,7 @@ class GitCommandHandler
     public function handle(GitCommitCommand $command) : void
     {
         $goToCommand = 'cd ' . $command->getComponentDirectoryPath();
-        $gitAddCommand = 'git add *' ;
+        $gitAddCommand = 'git add .gitignore && git add *' ;
         $gitCommitCommand = 'git commit -m "' . $command->getCommitMessage().'"';
 
         $this->shellExecutorClient->execute([$goToCommand, $gitAddCommand, $gitCommitCommand]);
