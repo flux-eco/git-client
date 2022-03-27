@@ -21,12 +21,20 @@
   "support": {
     "email": "support@fluxlabs.ch"
   },
+  "repositories": [
+    {
+      "type": "vcs", "url": "ssh://git@git.fluxlabs.ch:10022/fluxlabs/flux-eco/shell-executor.git"
+    }
+  ],
   "require": {
     "php": ">=8.0",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-yaml": "*",
     "composer-runtime-api": ">=2.1"
+  },
+  "require-dev": {
+    "flux-eco/shell-executor": "dev-main"
   },
   "autoload": {
     "psr-4": {
