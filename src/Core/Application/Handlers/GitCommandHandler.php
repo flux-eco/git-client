@@ -22,7 +22,7 @@ class GitCommandHandler
     {
         $goToCommand = 'cd ' . $command->getComponentDirectoryPath();
         $gitAddCommand = 'git add *' ;
-        $gitCommitCommand = 'git commit -am ' . $command->getCommitMessage();
+        $gitCommitCommand = 'git commit -m "' . $command->getCommitMessage().'"';
 
         $this->shellExecutorClient->execute([$goToCommand, $gitAddCommand, $gitCommitCommand]);
     }
