@@ -6,7 +6,6 @@ use FluxEco\GitClient\Core\{Application\Processes};
 
 class GitClientService
 {
-    private array $stateSchema;
     private ShellExecutor\ShellExecutorClient $shellExecutorClient;
     private CoScheduler\CoSchedulerClient $schedulerClient;
 
@@ -38,6 +37,20 @@ class GitClientService
             $command = Processes\GitCheckoutCommitAndPublishCommand::new($directoryPath, $branchName, $commitMessage);
             $scheduler->add(function ($command) {
                 Processes\GitCheckoutCommitAndPublishProcess::new($this->shellExecutorClient)->process($command);
+            }, $command);
+        }
+        $scheduler->start();
+    }
+
+    public function getResetHard(
+        array $componentDirectoryPaths,
+        string $branchName
+    ) : void {
+        $scheduler = $this->schedulerClient->getCoScheduler();
+        foreach ($componentDirectoryPaths as $directoryPath) {
+            $command = Processes\GitResetCommand::new($directoryPath, $branchName);
+            $scheduler->add(function ($command) {
+                Processes\GitResetProcess::new($this->shellExecutorClient)->process($command);
             }, $command);
         }
         $scheduler->start();

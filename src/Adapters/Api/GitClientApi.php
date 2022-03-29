@@ -29,4 +29,11 @@ class GitClientApi
         $this->service->gitCheckoutCommitAndPublish($componentDirectoryPaths, $branchName, $commitMessage);
     }
 
+    final public function gitResetHard(
+        array $componentDirectoryPaths,
+        string $branchName
+    ) : void {
+        $this->service->getResetHard($componentDirectoryPaths, $branchName);
+    }
+
 }
