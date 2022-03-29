@@ -21,7 +21,7 @@ class GitResetHandler
     public function handle(GitResetCommand $command) : void
     {
         $goToCommand = 'cd ' . $command->getComponentDirectoryPath();
-        $gitReset = 'git reset -hard origin/' . $command->getBranchName();
+        $gitReset = 'git reset --hard origin/' . $command->getBranchName();
 
         $this->shellExecutorClient->execute([$goToCommand, $gitReset]);
     }
