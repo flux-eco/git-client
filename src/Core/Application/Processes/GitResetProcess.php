@@ -22,7 +22,7 @@ class GitResetProcess
         return new self($shellExecutorClient);
     }
 
-    public function process(GitCheckoutCommitAndPublishCommand $processCommand) : void
+    public function process(GitResetCommand $processCommand) : void
     {
         $command = Handlers\GitCheckoutCommand::new(
             $processCommand->getComponentDirectoryPath(),
